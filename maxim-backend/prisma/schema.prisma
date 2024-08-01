@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator nexusPrisma {
+  provider = "nexus-prisma"
+}
+
+datasource prisma {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Miner {
+  id        String   @id @default(cuid())
+  model     String
+  hashrate  Int
+  // profit    Int
+  // profitPerc Int
+  // lastBlock Int
+  // firstBlock Int
+  // lastBlockTime Int
+  // firstBlockTime Int
+  // minerId    String
+  // minerName  String
+  // minerAddress String
+  createdAt DateTime @default(now())
+}

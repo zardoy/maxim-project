@@ -1,0 +1,16 @@
+node_modules
+*.log
+yarn.lock
+package-lock.json
+secret-*
+.env
+generated-*
+frontend/dist
+.vercel/**
+.next
+data*
+.vercel
+prisma/dev.db
+
+.DS_Store
+out
