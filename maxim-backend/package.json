@@ -35,7 +35,7 @@
     },
     "scripts": {
         "dev": "cross-env GEN_OUTPUTS=1 NODE_ENV=development ts-node-dev --transpile-only --clear src/index.ts",
-        "build": "esbuild --bundle --platform=node --minify --outfile=out/pixels.js src/index.ts --define:process.env.NODE_ENV=\"'production'\"",
+        "build": "esbuild --bundle --platform=node --external:@prisma/client --external:nexus-prisma --metafile=out/metafile.json --minify --outfile=out/index.js src/index.ts --define:process.env.NODE_ENV=\"'production'\"",
         "postinstall": "prisma generate"
     }
 }

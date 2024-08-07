@@ -9,6 +9,7 @@ import { useServer } from 'graphql-ws/lib/use/ws'
 
 // import './sentry'
 import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core'
+import { join } from 'path'
 
 export const prisma = new PrismaClient()
 
@@ -44,10 +45,12 @@ export const apollo = new ApolloServer({
 apollo.start().then(() => {
   apollo.applyMiddleware({
       app,
-      path: '*',
+      path: '/graphql',
   })
+  app.use(express.static(join(__dirname, './dist')))
   // apollo.installSubscriptionHandlers(http)
-  httpServer.listen(process.env.NODE_ENV === 'production' ? 8081 : 4000, () => {
-    console.log(`🚀 GraphQL service ready at http://localhost:4000/graphql`)
+  const port = process.env.NODE_ENV === 'production' ? 9091 : 4000;
+  httpServer.listen(port, () => {
+    console.log(`🚀 GraphQL service ready at http://localhost:${port}/graphql`)
   })
 })

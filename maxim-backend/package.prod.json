@@ -1,0 +1,12 @@
+{
+    "name": "backend",
+    "private": true,
+    "dependencies": {
+        "@prisma/client": "^5.10.2",
+        "nexus-prisma": "^2.0.5",
+        "prisma": "^5.10.2"
+    },
+    "scripts": {
+        "postinstall": "prisma generate"
+    }
+}

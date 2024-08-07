@@ -12,17 +12,35 @@ datasource prisma {
 }
 
 model Miner {
-  id        String   @id @default(cuid())
-  model     String
-  hashrate  Int
-  // profit    Int
-  // profitPerc Int
-  // lastBlock Int
-  // firstBlock Int
-  // lastBlockTime Int
-  // firstBlockTime Int
-  // minerId    String
-  // minerName  String
-  // minerAddress String
+  id            String  @id @default(cuid())
+  model         String
+  hashrate      Int
+  unit          String
+  image         String?
+  manufacturer  String
+  status        String
+  minTradeCount Int
+  title         String?
+  weight        Int?
+
+  powerConsumption Int
+  coolingType      String
+
+  miningCoin      String
+  miningAlgorithm String
+
+  isTopMiner Boolean
+  openCartId String?
+
+  // logistics
+  locationType String?
+  // china
+  locationCity String?
+  deliveryType String
+
+  costPrice Int
+  taxes     Int?
+
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
